@@ -1,54 +1,78 @@
-.loader {
-  width: 48px;
-  height: 48px;
-  display: inline-block;
-  position: relative;
-  background-color: #FFF;
-  background: radial-gradient(ellipse at center, #FF3D00 0%, #FF3D00 14%, #FFF 15%, #FFF 100%);
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
+body {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+  font-weight: 300;
 }
-.loader::after,
-.loader::before {
-  content: '';  
+
+.loader {
   position: absolute;
-  height: 16px;
-  width: 4px;
-  background: #FF3D00;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) rotate(0deg);
-  transform-origin: 25% 0;
-  box-sizing: border-box;
-  animation: rotation 10s linear infinite;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
 }
-.loader::before {
-  height: 22px;
-  width: 2px;
-  transform: translateX(-50%) rotate(0deg);
-  animation-duration: 1s;
-} 
-@keyframes rotation {
-  0%    { transform: rotate(0deg)}
-  100%  { transform: rotate(360deg)}
-} 
-.cat-info{
+
+.loader:before,
+.loader:after {
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+}
+.loader:after {
+  box-shadow: 0 2px 0 #ff3d00 inset;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.preloader {
+  /*фиксированное позиционирование*/
+  position: fixed;
+  /* координаты положения */
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* фоновый цвет элемента */
+  background: #e2c8c8;
+  /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
+  z-index: 1001;
+}
+/* .loaded .preloader {
+  display: none;
+} */
+
+.cat-info {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   margin-top: 30px;
 }
-span{
+span {
   font-weight: bold;
 }
-.descr{
+.descr {
   width: 500px;
 }
-h2{
-margin-left: 20px;}
-.error{
+h2 {
+  margin-left: 20px;
+}
+.error {
   display: none;
 }
-/* .loader{
-  
-} */
+.loaded .preloader {
+  display: none;
+}
+.loaded .breed-select {
+  display: block;
+}
