@@ -76,3 +76,7 @@ h2 {
 .loaded .breed-select {
   display: block;
 }
+.breed-select {
+  font-size: 18px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
