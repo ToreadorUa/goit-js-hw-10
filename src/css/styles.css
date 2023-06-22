@@ -73,10 +73,9 @@ h2 {
 .loaded .preloader {
   display: none;
 }
-.loaded .breed-select {
+/* .loaded .breed-select {
   display: block;
-}
-.breed-select {
-  font-size: 18px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+} */
+/* .breed-select {
+  width: 600px;
+} */

@@ -7,17 +7,17 @@ const catInfoEl = document.querySelector('.cat-info');
 const loaderEl = document.querySelector('.loader');
 let selectId;
 
-// new SlimSelect({
-//   select: '#single',
-// });
-
 inputEl.style.display = 'none';
 
 fetchBreeds()
   .then(data => {
     inputEl.insertAdjacentHTML('afterbegin', createSelect(data));
+
     document.body.classList.add('loaded');
     inputEl.style.display = '';
+    new SlimSelect({
+      select: '#single',
+    });
   })
 
   .catch(err => {
@@ -27,12 +27,15 @@ fetchBreeds()
   });
 
 function createSelect(arr) {
-  return arr
-    .map(
-      ({ reference_image_id, name }) =>
-        `<option value="${name}" data-id="${reference_image_id}">${name}</option>`
-    )
-    .join('');
+  return (
+    `<option data-placeholder="true">Select cat</option>` +
+    arr
+      .map(
+        ({ reference_image_id, name }) =>
+          `<option value="${name}" data-id="${reference_image_id}">${name}</option>`
+      )
+      .join('')
+  );
 }
 
 function createMarkup(arr) {

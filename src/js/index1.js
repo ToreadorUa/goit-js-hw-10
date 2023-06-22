@@ -6,14 +6,12 @@ const inputEl = document.querySelector('.breed-select');
 const catInfoEl = document.querySelector('.cat-info');
 const loaderEl = document.querySelector('.loader');
 let selectId;
-selectDataArr = [];
 
-new SlimSelect({
-  select: '#single',
-  data: selectDataArr,
-});
+// new SlimSelect({
+//   select: '#single',
+// });
 
-// inputEl.style.display = 'none';
+inputEl.style.display = 'none';
 
 fetchBreeds()
   .then(data => {
@@ -28,15 +26,7 @@ fetchBreeds()
     );
   });
 
-const input = new SlimSelect({
-  // data: selectDataArr,
-});
-input.setData(selectDataArr);
 function createSelect(arr) {
-  arr.forEach(({ name }) => {
-    selectDataArr.push({ text: name, value: name });
-  });
-  console.log(selectDataArr);
   return arr
     .map(
       ({ reference_image_id, name }) =>
@@ -68,6 +58,7 @@ function onChange() {
   catInfoEl.style.display = 'none';
   fetchCatByBreed(selectId)
     .then(data => {
+      console.log(data);
       document.body.classList.add('loaded');
       catInfoEl.style.display = '';
       catInfoEl.innerHTML = createMarkup(data);
